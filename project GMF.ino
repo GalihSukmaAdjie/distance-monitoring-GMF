@@ -26,8 +26,8 @@ String kon1, kon2;
 
 
 void setup() {
-  Serial.begin(115200);
-  mySerial.begin(9600);
+  Serial1.begin(9600);
+  mySerial.begin(115200);
 
   // Start I2C communication with the Multiplexer
   Wire.begin();
@@ -61,29 +61,29 @@ void loop() {
           tf_luna();
         }
       } else {
-        Serial.println("Data ERROR!");
+        Serial1.println("Data ERROR!");
       }
     }
-    Serial.print("x0.txt=\"");
-    Serial.print(distance);
-    Serial.print("\"");
-    Serial.write(0xff);
-    Serial.write(0xff);
-    Serial.write(0xff);
+    Serial1.print("x0.txt=\"");
+    Serial1.print(distance);
+    Serial1.print("\"");
+    Serial1.write(0xff);
+    Serial1.write(0xff);
+    Serial1.write(0xff);
 
-    Serial.print("x1.txt=\"");
-    Serial.print(kon1);
-    Serial.print("\"");
-    Serial.write(0xff);
-    Serial.write(0xff);
-    Serial.write(0xff);
+    Serial1.print("x1.txt=\"");
+    Serial1.print(kon1);
+    Serial1.print("\"");
+    Serial1.write(0xff);
+    Serial1.write(0xff);
+    Serial1.write(0xff);
 
-    Serial.print("x2.txt=\"");
-    Serial.print(kon2);
-    Serial.print("\"");
-    Serial.write(0xff);
-    Serial.write(0xff);
-    Serial.write(0xff);
+    Serial1.print("x2.txt=\"");
+    Serial1.print(kon2);
+    Serial1.print("\"");
+    Serial1.write(0xff);
+    Serial1.write(0xff);
+    Serial1.write(0xff);
 
     
   }
@@ -103,7 +103,7 @@ void tf_luna() {
     // print the data...
   } else {
     kon1 = tflI2C.printStatus();
-    Serial.print(kon1);    
+    Serial1.print(kon1);    
   }  // else, print error.
   // i2c pilih bus 3
   TCA9548A(3);
@@ -117,5 +117,5 @@ void tf_luna() {
     Serial.print(kon2);
   } //sen2 = 999;  // else, print error.
   
-  Serial.println("__________________________________");
+  //Serial.println("__________________________________");
 }
